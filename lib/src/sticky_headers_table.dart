@@ -230,13 +230,7 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
             /// STICKY ROW
             Expanded(
               child: NotificationListener<ScrollNotification>(
-                child: Scrollbar(
-                  // Key is required to avoid 'The Scrollbar's ScrollController has no ScrollPosition attached.
-                  key: Key('Row ${widget.showVerticalScrollbar}'),
-                  thumbVisibility: widget.showVerticalScrollbar ?? false,
-                  controller:
-                      widget.scrollControllers.horizontalTitleController,
-                  child: SingleChildScrollView(
+                child: SingleChildScrollView(
                     reverse: widget.tableDirection == TextDirection.rtl,
                     physics: widget.scrollPhysics.stickyRow,
                     scrollDirection: Axis.horizontal,
@@ -261,7 +255,14 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
                     controller:
                         widget.scrollControllers.horizontalTitleController,
                   ),
-                ),
+                // child: Scrollbar(
+                //   // Key is required to avoid 'The Scrollbar's ScrollController has no ScrollPosition attached.
+                //   key: Key('Row ${widget.showVerticalScrollbar}'),
+                //   thumbVisibility: widget.showVerticalScrollbar ?? false,
+                //   controller:
+                //       widget.scrollControllers.horizontalTitleController,
+                //   child: ,
+                // ),
                 onNotification: (notification) =>
                     _onHorizontalScrollingNotification(
                   notification: notification,
